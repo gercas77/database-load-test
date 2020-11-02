@@ -1,0 +1,7 @@
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/
+
+.env
+.vscode
+node_modules/

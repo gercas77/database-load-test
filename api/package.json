@@ -4,18 +4,10 @@
   "description": "Repo for a dummy project to load test Amazon Aurora Serverless",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gercas77/database-load-test.git"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gercas77/database-load-test/issues"
-  },
-  "homepage": "https://github.com/gercas77/database-load-test#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "koa": "^2.13.0",

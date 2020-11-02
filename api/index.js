@@ -7,6 +7,11 @@ const Router = require('koa-router');
 const sqlUtils = require('./sql');
 
 const router = new Router();
+router.get('/', async(ctx, next) => {
+    ctx.status = 200;
+
+    await next();
+});
 router.get('/users/:id', async(ctx, next) => {
     let params = ctx.request.params;
 

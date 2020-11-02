@@ -1,11 +1,18 @@
 {
     "config": {
-        "target": "http://localhost:8080",
+        "target": "http://aurora-serverless-api-dev2.us-east-1.elasticbeanstalk.com",
         "phases": [
             {
-                "duration": 180,
-                "arrivalRate": 1,
-                "rampTo": 100
+                "arrivalRate": 100,
+                "duration": 60
+            },
+            {
+                "arrivalRate": 150,
+                "duration": 60
+            },
+            {
+                "arrivalRate": 250,
+                "duration": 60
             },
             {
                 "arrivalRate": 80,
@@ -25,7 +32,7 @@
     },
     "scenarios": [
         {
-            "weight": 4,
+            "weight": 3,
             "flow": [
                 {
                     "function": "makeNameForQuery"
@@ -38,7 +45,7 @@
             ]
         },
         {
-            "weight": 4,
+            "weight": 3,
             "flow": [
                 {
                     "function": "makeSalariesForQuery"
@@ -51,7 +58,7 @@
             ]
         },
         {
-            "weight": 2,
+            "weight": 4,
             "flow": [
                 {
                     "function": "makeDataForNewUser"
