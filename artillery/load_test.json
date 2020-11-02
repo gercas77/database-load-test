@@ -1,0 +1,67 @@
+{
+    "config": {
+        "target": "http://localhost:8080",
+        "phases": [
+            {
+                "duration": 180,
+                "arrivalRate": 1,
+                "rampTo": 100
+            },
+            {
+                "arrivalRate": 80,
+                "duration": 20
+            },
+            {
+                "arrivalRate": 40,
+                "duration": 20
+            },
+            {
+                "arrivalRate": 10,
+                "duration": 20
+            }
+        ],
+        "processor": "./functions.js",
+        "variables": {}
+    },
+    "scenarios": [
+        {
+            "weight": 4,
+            "flow": [
+                {
+                    "function": "makeNameForQuery"
+                },
+                {
+                    "get": {
+                        "url": "/users?type=by_name&name={{ nameForQuery }}"
+                    }
+                }
+            ]
+        },
+        {
+            "weight": 4,
+            "flow": [
+                {
+                    "function": "makeSalariesForQuery"
+                },
+                {
+                    "get": {
+                        "url": "/users?type=by_salary&from={{ from }}&to={{ to }}"
+                    }
+                }
+            ]
+        },
+        {
+            "weight": 2,
+            "flow": [
+                {
+                    "function": "makeDataForNewUser"
+                },
+                {
+                    "post": {
+                        "url": "/users?name={{ newUserName }}&age={{ newUserAge }}&salary={{ newUserSalary }}"
+                    }
+                }
+            ]
+        }
+    ]
+}
